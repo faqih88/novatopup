@@ -98,16 +98,17 @@
       const hargaPaket = selectedPaket.querySelector('.harga').innerText;
       const nomorAdmin = "6285213299945"; 
       
-      const teksPesan = `Halo Admin NovaTopup, saya ingin order:\n\n` +
-                        `• Game: Mobile Legends\n` +
-                        `• User ID: ${userId} (${zoneId})\n` +
-                        `• Paket: ${namaPaket}\n` +
-                        `• Harga: ${hargaPaket}\n\n` +
-                        `Mohon info detail pembayarannya. Terima kasih!`;
+      const teksPesan = "Halo Admin NovaTopup, saya ingin order:\n\n" +
+                        "• Game: Mobile Legends\n" +
+                        "• User ID: " + userId + " (" + zoneId + ")\n" +
+                        "• Paket: " + namaPaket + "\n" +
+                        "• Harga: " + hargaPaket + "\n\n" +
+                        "Mohon info detail pembayarannya. Terima kasih!";
 
-      window.open(`https://wa.me{nomorAdmin}?text=${encodeURIComponent(teksPesan)}`, '_blank');
+      window.open("https://wa.me" + nomorAdmin + "?text=" + encodeURIComponent(teksPesan), "_blank");
     }
   </script>
 </body>
 </html>
+
 
