@@ -3,159 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTopup - Tempat Top Up Game Termurah & Instan</title>
+    <title>NovaTopup - Platform Top Up Premium Terlengkap</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: #0b0e14; color: #ffffff; padding: 15px 0 40px 0; }
+        body { background-color: #0b0e14; color: #ffffff; padding-bottom: 30px; }
         
-        .main-wrapper { max-width: 600px; margin: 0 auto; width: 92%; }
-        
-        h1 { text-align: center; color: #4ade80; font-size: 28px; letter-spacing: 1.5px; font-weight: 800; margin-top: 10px; }
-        .subtitle { text-align: center; color: #ef4444; margin-bottom: 25px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
+        /* HEADER UTAMA */
+        header { background: #141822; padding: 15px; border-bottom: 1px solid #1f2635; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 20px; font-weight: 900; color: #4ade80; letter-spacing: 1px; cursor: pointer; }
+        .logo span { color: #ffffff; font-size: 11px; margin-left: 5px; font-weight: bold; border-left: 2px solid #2d364d; padding-left: 5px; }
 
-        .container { background: #141822; padding: 16px; border-radius: 16px; border: 1px solid #1f2635; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
-        .section-title { font-size: 13px; font-weight: 700; margin-bottom: 15px; color: #4ade80; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        /* LOBI ALL GAME */
-        .grid-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
-        .game-card { background: #1a202c; border: 1px solid #2d364d; border-radius: 12px; padding: 14px 6px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
-        .game-card.active { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 10px rgba(74,222,128,0.3); }
-        .game-card .game-avatar { font-size: 24px; margin-bottom: 4px; display: block; }
-        .game-card span { font-size: 11px; font-weight: bold; color: #f3f4f6; display: block; line-height: 1.2; }
-        .game-card .badge-discount { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 1px 4px; border-bottom-left-radius: 6px; font-weight: bold; }
+        .wrapper { max-width: 600px; margin: 0 auto; width: 92%; padding-top: 15px; }
 
-        /* Form Input */
-        .input-group { display: flex; gap: 10px; }
-        input { flex: 1; padding: 14px; background: #1f2635; border: 1px solid #2d364d; border-radius: 10px; font-size: 14px; color: white; outline: none; width: 100%; }
+        /* ================= HALAMAN LOBI UTAMA (HOME) ================= */
+        #halaman-home { display: block; }
+        .banner-info { background: #141822; padding: 12px; border-radius: 10px; border: 1px solid #1f2635; margin-bottom: 20px; font-size: 11px; font-weight: bold; text-align: center; color: #facc15; }
+        .main-title { font-size: 18px; font-weight: 800; color: #4ade80; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .grid-lobi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
+        .card-lobi { background: #141822; border: 1px solid #1f2635; border-radius: 12px; padding: 8px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
+        .card-lobi:hover { border-color: #4ade80; }
+        .card-lobi img { width: 100%; height: 60px; object-fit: cover; border-radius: 8px; margin-bottom: 6px; }
+        .card-lobi span { font-size: 11px; font-weight: bold; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tag-diskon { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 5px; border-bottom-left-radius: 6px; font-weight: bold; }
+
+        /* ================= HALAMAN DETAIL GAME (TOP UP) ================= */
+        #halaman-detail { display: none; }
+        .btn-kembali { background: #1f2635; color: #9ca3af; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: bold; cursor: pointer; margin-bottom: 15px; display: inline-flex; align-items: center; gap: 5px; }
+        
+        .info-pemberitahuan { background: rgba(234,179,8,0.1); border: 1px dashed #eab308; padding: 10px; border-radius: 10px; font-size: 12px; color: #facc15; margin-bottom: 20px; text-align: center; }
+        
+        .box-section { background: #141822; padding: 16px; border-radius: 16px; border: 1px solid #1f2635; margin-bottom: 20px; }
+        .step-num { width: 22px; height: 22px; background: #4ade80; color: #0b0e14; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: bold; margin-right: 8px; vertical-align: middle; }
+        .section-label { font-size: 14px; font-weight: 700; color: #ffffff; display: inline-block; vertical-align: middle; text-transform: uppercase; }
+
+        /* Filter Sub-Layanan */
+        .scroll-filter { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 10px; margin-top: 12px; scrollbar-width: none; }
+        .scroll-filter::-webkit-scrollbar { display: none; }
+        .filter-btn { background: #1a202c; border: 1px solid #2d364d; color: #9ca3af; padding: 8px 16px; border-radius: 20px; font-size: 11px; font-weight: bold; white-space: nowrap; cursor: pointer; }
+        .filter-btn.active { background: #4ade80; color: #0b0e14; border-color: #4ade80; }
+
+        /* Input Form */
+        .input-row { display: flex; gap: 10px; margin-top: 12px; }
+        input { flex: 1; padding: 14px; background: #1f2635; border: 1px solid #2d364d; border-radius: 10px; font-size: 13px; color: white; outline: none; }
         input:focus { border-color: #4ade80; }
-        
-        /* GRID DAFTAR HARGA PAKET (TERKUNCI PERMANEN) */
-        .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .card-paket:hover { border-color: #4ade80; background: #1f2736; }
-        .card-paket.selected { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 14px rgba(74,222,128,0.3); }
-        
-        .card-paket .item-icon { font-size: 26px; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
-        .card-paket .dm { font-size: 13px; color: #f3f4f6; display: block; margin-bottom: 4px; font-weight: 600; }
-        .card-paket .harga { font-size: 14px; color: #4ade80; display: block; font-weight: 800; }
-        .card-paket .coret { font-size: 11px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 2px; }
-        .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
-        
-        /* Tombol Transaksi */
-        .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); margin-bottom: 12px; }
-        .btn-order:hover { background: #20ba5a; }
-        .btn-wa-manual { width: 100%; background: #0284c7; color: white; border: none; padding: 14px; font-size: 13px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(2,132,199,0.3); }
 
-        /* ALL PAYMENT AREA */
-        .payment-section { text-align: center; padding-top: 10px; }
-        .payment-title { font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        /* Grid Diamond / UC */
+        .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 12px; }
+        .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .card-paket.selected { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 14px rgba(74,222,128,0.25); }
+        
+        .card-paket img { width: 44px; height: 40px; object-fit: contain; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+        .card-paket .dm-title { font-size: 12px; color: #f3f4f6; display: block; margin-bottom: 3px; font-weight: 600; line-height: 1.3; }
+        .card-paket .harga-diskon { font-size: 14px; color: #4ade80; display: block; font-weight: 800; }
+        .card-paket .harga-asli { font-size: 11px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 2px; }
+        .card-paket .badge-persen { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 5px; border-bottom-left-radius: 6px; font-weight: bold; }
+
+        /* Tombol Beli */
+        .btn-submit { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); margin-bottom: 12px; }
+
+        /* ================= FOOTER ALL PAYMENT COMPLETE ================= */
+        .payment-box { text-align: center; padding-top: 5px; }
+        .payment-header { font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 15px; letter-spacing: 2px; }
+        .payment-label { font-size: 10px; color: #9ca3af; text-align: left; margin: 12px 0 6px 0; font-weight: bold; letter-spacing: 0.5px; }
         .grid-pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; }
-        .pay-badge { background: #ffffff; padding: 8px 4px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #111827; height: 36px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); width: 100%; text-transform: uppercase; }
-        .pay-badge.qris { background: #a855f7; color: white; }
-        .pay-badge.bca { color: #003399; font-style: italic; font-size: 13px; font-weight: bold; }
-        .pay-badge.dana { background: #0086ff; color: white; font-size: 12px; }
-        .pay-badge.spay { background: #ff5722; color: white; font-size: 9px; }
-        .pay-badge.ovo { background: #4c2a86; color: white; }
-        .pay-badge.gopay { background: #00aed6; color: white; }
-        .pay-badge.bri { color: #00569b; font-size: 13px; }
-        .pay-badge.mandiri { color: #1c3f60; font-size: 10px; }
+        .badge-pay { background: #ffffff; padding: 8px 4px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #111827; height: 34px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); width: 100%; }
+        .badge-pay.qris { background: #a855f7; color: white; grid-column: span 4; height: 38px; font-size: 13px; letter-spacing: 0.5px; }
+        .badge-pay.bca { color: #003399; font-style: italic; font-size: 12px; }
+        .badge-pay.dana { background: #0086ff; color: white; font-size: 11px; }
+        .badge-pay.spay { background: #ff5722; color: white; font-size: 9px; }
+        .badge-pay.ovo { background: #4c2a86; color: white; }
+        .badge-pay.gopay { background: #00aed6; color: white; }
     </style>
 </head>
 <body>
 
-<div class="main-wrapper">
-    <h1>NOVATOPUP</h1>
-    <p class="subtitle">⚡ HARGA RESELLER • GAME TERLENGKAP • INSTAN 24 JAM ⚡</p>
+<header>
+    <div class="logo" onclick="bukaHome()">NOVATOPUP<span>FLASH</span></div>
+</header>
 
-    <!-- LOBI GAME -->
-    <div class="container">
-        <span class="section-title">Pilih Game (Lobi Game)</span>
-        <div class="grid-games">
-            <div class="game-card active" id="btn-ml" onclick="gantiGame('ml')">
-                <span class="badge-discount">PROMO</span>
-                <span class="game-avatar">⚔️</span>
+<div class="wrapper">
+
+    <!-- ================= HALAMAN LOBI UTAMA (HOME) ================= -->
+    <div id="halaman-home">
+        <div class="banner-info">🔥 HARGA RESELLER ANTI-MAHAL • OPEN RESELLER VIA WA ADM 🔥</div>
+        <div class="main-title">GAMES POPULER</div>
+        
+        <div class="grid-lobi">
+            <!-- Mobile Legends -->
+            <div class="card-lobi" onclick="masukGame('ml')">
+                <span class="tag-diskon">-16%</span>
+                <img src="https://wallpapers.com" alt="MLBB">
                 <span>Mobile Legends</span>
             </div>
-            <div class="game-card" id="btn-ff" onclick="gantiGame('ff')">
-                <span class="badge-discount">MURAH</span>
-                <span class="game-avatar">🔫</span>
+            <!-- Free Fire -->
+            <div class="card-lobi" onclick="masukGame('ff')">
+                <span class="tag-diskon">-16%</span>
+                <img src="https://wallpapers.com" alt="FF">
                 <span>Free Fire</span>
             </div>
-            <div class="game-card" id="btn-pubg" onclick="gantiGame('pubg')">
-                <span class="badge-discount">BOOM</span>
-                <span class="game-avatar">🪂</span>
+            <!-- PUBG Mobile -->
+            <div class="card-lobi" onclick="masukGame('pubg')">
+                <span class="tag-diskon">-10%</span>
+                <img src="https://wallpapers.com" alt="PUBG">
                 <span>PUBG Mobile</span>
             </div>
         </div>
     </div>
 
-    <!-- DATA AKUN -->
-    <div class="container">
-        <span class="section-title" id="title-akun">1. Masukkan Data Akun Mobile Legends</span>
-        <div class="input-group">
-            <input type="number" id="userId" placeholder="Masukkan User ID" required>
-            <input type="number" id="zoneId" placeholder="Masukkan Zone ID" required>
-        </div>
-    </div>
+    <!-- ================= HALAMAN DETAIL GAME (TOP UP) ================= -->
+    <div id="halaman-detail">
+        <button class="btn-kembali" onclick="bukaHome()">⬅ Kembali ke Lobi</button>
+        
+        <div class="info-pemberitahuan">ℹ info penting: hanya untuk region indonesia</div>
 
-    <!-- DAFTAR PAKET DIAMOND / UC -->
-    <div class="container">
-        <span class="section-title" id="title-paket">2. Pilih Nominal Paket</span>
-        <div class="grid-paket" id="area-paket">
-            <!-- Paket dimuat permanen lewat script di bawah -->
-        </div>
-    </div>
-
-    <!-- TOMBOL TRANSAKSI -->
-    <div style="margin-bottom: 25px;">
-        <button class="btn-order" onclick="kirimOrder()">
-            🟢 Beli Sekarang via WhatsApp
-        </button>
-        <button class="btn-wa-manual" onclick="window.open('https://wa.me', '_blank')">
-            🔵 Hubungi Admin WA (Order Manual / Tanya Game Lain)
-        </button>
-    </div>
-
-    <!-- METODE ALL PAYMENT -->
-    <div class="container">
-        <div class="payment-section">
-            <div class="payment-title">ALL PAYMENT</div>
-            <div class="grid-pay">
-                <div class="pay-badge qris">QRIS</div>
-                <div class="pay-badge bca">BCA</div>
-                <div class="pay-badge dana">DANA</div>
-                <div class="pay-badge spay">SPay</div>
-                <div class="pay-badge ovo">OVO</div>
-                <div class="pay-badge gopay">GOPAY</div>
-                <div class="pay-badge bri">BRI</div>
-                <div class="pay-badge mandiri">MANDIRI</div>
+        <!-- Bagian Filter Sub-Layanan -->
+        <div class="box-section" style="padding-bottom: 12px;">
+            <div class="step-num">1</div>
+            <div class="section-label">Pilih Nominal Layanan</div>
+            <div class="scroll-filter" id="area-filter">
+                <!-- Diisi via JavaScript -->
             </div>
         </div>
-    </div>
-</div>
 
-<script>
-    const dataProduk = {
-        ml: {
-            titleAkun: "1. Masukkan Data Akun Mobile Legends",
-            titlePaket: "2. Pilih Nominal Diamond (MLBB Murah)",
-            showZone: true,
-            items: [
-                { name: "Weekly Diamond Pass", harga: "Rp 26.500", coret: "Rp 32.000", badge: "BEST", icon: "🎫" },
-                { name: "86 Diamonds", harga: "Rp 19.900", coret: "Rp 24.000", badge: "-15%", icon: "💎" },
-                { name: "172 Diamonds", harga: "Rp 39.500", coret: "Rp 48.000", badge: "-15%", icon: "💎" },
-                { name: "257 Diamonds", harga: "Rp 59.000", coret: "Rp 72.000", badge: "-15%", icon: "💎" },
-                { name: "344 Diamonds", harga: "Rp 78.800", coret: "Rp 95.000", badge: "BOOM", icon: "💎" },
-                { name: "706 Diamonds", harga: "Rp 159.000", coret: "Rp 190.000", badge: "BEST", icon: "💎" }
-            ]
-        },
-        ff: {
-            titleAkun: "1. Masukkan Player ID Free Fire",
-            titlePaket: "2. Pilih Nominal Diamond (Free Fire Murah)",
-            showZone: false,
-            items: [
-                { name: "50 Diamonds", harga: "Rp 7.000", coret: "Rp 10.000", badge: "PROMO", icon: "🔥" },
-                { name: "70 Diamonds", harga: "Rp 9.500", coret: "Rp 13.000", badge: "MURAH", icon: "🔥" },
-                { name: "140 Diamonds", harga: "Rp 18.800", coret: "Rp 25.000", badge: "BEST", icon: "🔥" },
-                { name: "355 Diamonds", harga: "Rp 46.900", coret: "Rp 60.000", badge: "HEMAT", icon: "🔥" },
-                { name: "720 Diamonds", harga: "Rp 92.500", coret: "Rp 120.000", badge: "BOOM", icon: "🔥" },
+        <!-- Bagian Masukkan Akun -->
+        <div class="box-section">
+            <div class="step-num">2</div>
+            <div class="section-label" id="label-langkah-akun">Masukkan Data Akun</div>
+            <div class="input-row">
+                <input type="number" id="userId" placeholder="Masukkan ID">
+                <input type="number" id="zoneId" placeholder="Masukkan Zone ID">
+            </div>
+        </div>
+
+        <!-- Bagian Daftar Diamond -->
+        <div class="box-section">
+            <div class="step-num">3</div>
+            <div class="section-label" id="label-langkah-paket">Pilih Nominal Item</div>
+            <div class="grid-paket" id="area-paket">
+                <!-- Diisi via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Tombol Transaksi -->
+
