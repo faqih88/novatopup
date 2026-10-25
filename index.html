@@ -3,135 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTopup | Premium & Instant Game Refill</title>
-    <!-- Tailwind CSS v4 -->
-    <script src="https://jsdelivr.net"></script>
-    <!-- Google Fonts & FontAwesome Icons -->
+    <title>NovaTopup - Tempat Top Up Game Termurah & Instan</title>
+    <!-- Tailwind CSS untuk Layout Modern & Responsif -->
+    <script src="https://tailwindcss.com"></script>
+    <!-- Font Inter & Font Awesome untuk Ikon -->
     <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="https://cloudflare.com">
+    
     <style>
-        body { font-family: 'Poppins', sans-serif; }
+        body { 
+            background-color: #0b0f19; 
+            color: #f8fafc; 
+            font-family: 'Inter', sans-serif; 
+        }
+        .active-tab {
+            background-color: #84cc16 !important;
+            color: #000000 !important;
+            font-weight: 700;
+        }
+        .card-active {
+            border-color: #84cc16 !important;
+            background-color: #1e293b / 40 !important;
+        }
+        /* Custom scrollbar halus */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; rounded: 10px; }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-100 min-h-screen">
+<body class="antialiased pb-24">
 
-    <!-- Header Navbar -->
-    <nav class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50 shadow-md">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-extrabold text-amber-500 tracking-wider flex items-center">
-                <i class="fa-solid fa-bolt-lightning mr-2 animate-bounce"></i>NovaTopup
-            </h1>
-            <div class="flex items-center space-x-2">
-                <span class="text-[10px] bg-amber-500 text-gray-900 font-bold px-2 py-1 rounded-md">
-                    HARGA RESELLER UNIPIN
-                </span>
-                <span class="text-[10px] bg-green-500 text-gray-900 font-bold px-2 py-1 rounded-md animate-pulse">
-                    OTOMATIS 1 DETIK
-                </span>
+    <!-- NAVBAR PREMIUM (Mirip PointGo) -->
+    <nav class="bg-[#0b0f19]/90 border-b border-slate-800/80 p-4 sticky top-0 z-50 backdrop-blur-md">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <!-- Brand Logo -->
+            <div class="flex flex-col">
+                <h1 class="text-2xl font-extrabold text-lime-500 tracking-tighter leading-none">NOVA<span class="text-white">TOPUP</span></h1>
+                <span class="text-[9px] text-slate-400 font-bold tracking-widest mt-0.5">#BANYAKUNTUNGNYA</span>
+            </div>
+            <!-- Fitur Kanan -->
+            <div class="flex items-center gap-4 text-slate-300">
+                <button class="hover:text-lime-500 transition"><i class="fa-solid fa-magnifying-glass text-lg"></i></button>
+                <button class="hover:text-lime-500 transition"><i class="fa-solid fa-bars text-xl"></i></button>
             </div>
         </div>
     </nav>
 
-    <!-- Banner & Komponen Gambar Game Utama -->
-    <div class="relative h-56 md:h-72 w-full overflow-hidden">
-        <!-- Gambar Background Banner Game -->
-        <img src="https://unsplash.com" alt="Gaming Banner" class="w-full h-full object-cover opacity-30">
-        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"></div>
-        
-        <div class="absolute bottom-4 left-4 right-4 flex items-center space-x-4">
-            <!-- Gambar Ikon Game MLBB Bulat ala Store Besar -->
-            <img src="https://unsplash.com" alt="Mobile Legends Icon" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-2 border-amber-500 object-cover shadow-2xl">
-            <div>
-                <h2 class="text-xl md:text-2xl font-bold text-white tracking-wide">Mobile Legends: Bang Bang</h2>
-                <p class="text-xs text-amber-400 font-medium mt-0.5"><i class="fa-solid fa-shield-halved mr-1"></i> Jalur Kilat API & Legal 100%</p>
-                <p class="text-[11px] text-gray-400 mt-1">Proses instan masuk ke akun tanpa penundaan menit.</p>
+    <!-- KONTEN UTAMA -->
+    <main class="max-w-5xl mx-auto px-4 mt-6 space-y-8">
+
+        <!-- BANNER PROMO / SLIDER UTAMA -->
+        <div class="bg-gradient-to-br from-slate-900 via-[#111827] to-slate-900 rounded-3xl p-6 border border-slate-800/60 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="space-y-3 max-w-lg z-10 text-center md:text-left">
+                <span class="bg-lime-500/10 text-lime-400 border border-lime-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Daily NovaTopup</span>
+                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight">TEMPAT TOP UP GAME <span class="text-lime-500">TERMURAH!</span></h2>
+                <p class="text-xs md:text-sm text-slate-400 font-medium">Proses otomatis, aman, 24 jam non-stop dengan harga paling bersaing se-Indonesia.</p>
             </div>
+            <img src="https://okezone.com" 
+                 alt="Promo" class="w-full md:w-80 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-xl z-10">
         </div>
-    </div>
 
-    <!-- Layout Grid Utama -->
-    <main class="container mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        
-        <!-- Sisi Kiri: Form Data Akun & Pilihan Produk Murah -->
-        <div class="lg:col-span-2 space-y-6">
-            
-            <!-- Langkah 1: Pengisian ID Game -->
-            <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 shadow-xl">
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-amber-500 text-gray-950 font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span>
-                    <h3 class="text-base font-semibold text-white">Masukkan Data Akun MLBB</h3>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[11px] text-gray-400 mb-1">User ID</label>
-                        <input type="number" id="userId" placeholder="Contoh: 12345678" class="w-full bg-gray-950 border border-gray-700 rounded-xl p-3 focus:outline-none focus:border-amber-500 text-sm text-white transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-[11px] text-gray-400 mb-1">Zone ID</label>
-                        <input type="number" id="zoneId" placeholder="Contoh: 1234" class="w-full bg-gray-950 border border-gray-700 rounded-xl p-3 focus:outline-none focus:border-amber-500 text-sm text-white transition-colors">
-                    </div>
+        <!-- SECTION FLASH DEAL HARGANYA MIRING -->
+        <section class="space-y-3">
+            <div class="flex flex-wrap items-center gap-3">
+                <h3 class="text-xl font-black tracking-tight text-white uppercase italic">⚡ Flash Deal</h3>
+                <div class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-md animate-pulse">
+                    <i class="fa-regular fa-clock"></i>
+                    <span id="countdownTimer">06:17:18</span>
                 </div>
             </div>
 
-            <!-- Langkah 2: Pilihan Diamond Dibandrol Harga Murah -->
-            <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 shadow-xl">
-                <div class="flex items-center space-x-3 mb-4">
-                    <span class="bg-amber-500 text-gray-955 font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span>
-                    <h3 class="text-base font-semibold text-white">Pilih Nominal Diamond (Harga Murah)</h3>
-                </div>
-                
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <!-- Item List Murah -->
-                    <button onclick="selectProduct('3 Diamonds', 1000)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="flex justify-between items-start">
-                            <span class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>3 Dms</span>
-                            <span class="text-[9px] bg-red-950 text-red-400 px-1.5 py-0.5 rounded font-bold">Promo</span>
+            <!-- Grid Items Flash Deal Miring -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Item Flash 1 -->
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col justify-between group cursor-pointer" onclick="quickSelect('Mobile Legends', '3738 Diamonds', 'Rp 985.000')">
+                    <span class="absolute top-2 left-2 bg-lime-500 text-black font-extrabold text-[9px] px-2 py-0.5 rounded-md z-10">TERSISA : 14</span>
+                    <div class="rounded-xl overflow-hidden aspect-video relative mt-6">
+                        <img src="https://okezone.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="mt-3 space-y-1">
+                        <p class="text-[11px] font-bold text-slate-200 line-clamp-1">3738 Diamonds (3247 + 491 Bonus)</p>
+                        <p class="text-[10px] text-slate-500 line-through">Rp 1.217.341</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-lime-400">Rp 985.000</span>
+                            <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold">🔥 FLASH</span>
                         </div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 1.000</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 1.500</div>
-                    </button>
+                    </div>
+                </div>
+                <!-- Item Flash 2 -->
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col justify-between group cursor-pointer" onclick="quickSelect('Mobile Legends', '4588 Diamonds', 'Rp 1.199.000')">
+                    <span class="absolute top-2 left-2 bg-lime-500 text-black font-extrabold text-[9px] px-2 py-0.5 rounded-md z-10">TERSISA : 10</span>
+                    <div class="rounded-xl overflow-hidden aspect-video relative mt-6">
+                        <img src="https://okezone.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                    </div>
+                    <div class="mt-3 space-y-1">
+                        <p class="text-[11px] font-bold text-slate-200 line-clamp-1">4588 Diamonds (3919 + 669 Bonus)</p>
+                        <p class="text-[10px] text-slate-500 line-through">Rp 1.462.329</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-black text-lime-400">Rp 1.199.000</span>
+                            <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold">🔥 FLASH</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <button onclick="selectProduct('5 Diamonds', 1350)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>5 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 1.350</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 2.000</div>
-                    </button>
+        <!-- FORM ORDER LANGSUNG & PILIHAN HARGA MURAH MERIAH -->
+        <section class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 space-y-6">
+            <div class="border-b border-slate-800 pb-3">
+                <h4 class="text-lg font-black text-white flex items-center gap-2">
+                    <i class="fa-solid fa-gamepad text-lime-500"></i> Form Top Up Mobile Legends
+                </h4>
+                <p class="text-xs text-slate-400">Silakan isi data akun dan pilih paket diamond murah di bawah ini.</p>
+            </div>
+            
+            <!-- LANGKAH 1: ID AKUN -->
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">1. Masukkan Data Akun</label>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" id="userId" placeholder="User ID" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-lime-500 text-white transition">
+                    <input type="number" id="zoneId" placeholder="Zone ID (Server)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-lime-500 text-white transition">
+                </div>
+            </div>
 
-                    <button onclick="selectProduct('12 Diamonds', 3200)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>12 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 3.200</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 4.500</div>
-                    </button>
+            <!-- LANGKAH 2: PILIHAN DIAMOND HARGA AGEN -->
+            <div class="space-y-2">
+                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">2. Pilih Nominal Paket (Murah Meriah)</label>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="packageGrid">
+                    
+                    <!-- Item 1 -->
+                    <div class="diamond-card border border-slate-800 bg-slate-950 p-4 rounded-xl cursor-pointer hover:border-lime-500 flex flex-col justify-between transition" onclick="selectItem('5 Diamonds', 'Rp 1.200', this)">
+                        <p class="text-xs font-bold text-white">💎 5 Diamonds</p>
+                        <p class="text-[11px] text-lime-400 font-bold mt-2">Rp 1.200</p>
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="diamond-card border border-slate-800 bg-slate-950 p-4 rounded-xl cursor-pointer hover:border-lime-500 flex flex-col justify-between transition" onclick="selectItem('12 Diamonds', 'Rp 3.100', this)">
+                        <p class="text-xs font-bold text-white">💎 12 Diamonds</p>
+                        <p class="text-[11px] text-lime-400 font-bold mt-2">Rp 3.100</p>
+                    </div>
+                    <!-- Item 3 -->
 
-                    <button onclick="selectProduct('28 Diamonds', 7300)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>28 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 7.300</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 10.000</div>
-                    </button>
-
-                    <button onclick="selectProduct('59 Diamonds', 15200)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>59 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 15.200</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 19.500</div>
-                    </button>
-
-                    <button onclick="selectProduct('85 Diamonds', 21800)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>85 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 21.800</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 28.000</div>
-                    </button>
-
-                    <button onclick="selectProduct('170 Diamonds', 43500)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>170 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 43.500</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 55.000</div>
-                    </button>
-
-                    <button onclick="selectProduct('296 Diamonds', 75000)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
-                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>296 Dms</div>
-                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 75.000</div>
-                        <div class="text-[9px] text-gray-500 line-through">Rp 92.000</div>
-                    </button>
 
 
 
