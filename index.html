@@ -6,60 +6,55 @@
     <title>NovaTopup - Tempat Top Up Game Termurah & Instan</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
-        body { background-color: #0b0e14; color: #ffffff; padding-bottom: 40px; }
-        
-        /* Banner Atas */
-        .hero-banner { width: 100%; height: 150px; background: linear-gradient(rgba(11,14,20,0.3), #0b0e14), url('https://wallpapers.com') center/cover no-repeat; display: flex; align-items: center; justify-content: center; }
+        body { background-color: #0b0e14; color: #ffffff; padding: 15px 0 40px 0; }
         
         .main-wrapper { max-width: 600px; margin: 0 auto; width: 92%; }
         
-        h1 { text-align: center; color: #4ade80; font-size: 28px; letter-spacing: 1.5px; font-weight: 800; margin-top: 15px; }
-        .subtitle { text-align: center; color: #ef4444; margin-bottom: 25px; font-size: 12px; font-weight: bold; letter-spacing: 1px; }
+        h1 { text-align: center; color: #4ade80; font-size: 28px; letter-spacing: 1.5px; font-weight: 800; margin-top: 10px; }
+        .subtitle { text-align: center; color: #ef4444; margin-bottom: 25px; font-size: 11px; font-weight: bold; letter-spacing: 1px; }
 
-        .container { background: #141822; padding: 20px; border-radius: 16px; border: 1px solid #1f2635; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
-        .section-title { font-size: 14px; font-weight: 700; margin-bottom: 15px; color: #4ade80; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
+        .container { background: #141822; padding: 16px; border-radius: 16px; border: 1px solid #1f2635; margin-bottom: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+        .section-title { font-size: 13px; font-weight: 700; margin-bottom: 15px; color: #4ade80; display: block; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        /* 1. SEKSI LOBI ALL GAME */
-        .grid-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 10px; }
-        .game-card { background: #1a202c; border: 1px solid #2d364d; border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; overflow: hidden; }
-        .game-card.active { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 10px rgba(74,222,128,0.2); }
-        .game-card img { width: 100%; height: 65px; object-fit: cover; border-radius: 8px; margin-bottom: 6px; }
-        .game-card span { font-size: 11px; font-weight: bold; color: #f3f4f6; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        /* LOBI ALL GAME */
+        .grid-games { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .game-card { background: #1a202c; border: 1px solid #2d364d; border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
+        .game-card.active { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 10px rgba(74,222,128,0.3); }
+        .game-card .game-icon { font-size: 32px; margin-bottom: 8px; display: block; }
+        .game-card span { font-size: 11px; font-weight: bold; color: #f3f4f6; display: block; }
         .game-card .badge-discount { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 1px 4px; border-bottom-left-radius: 6px; font-weight: bold; }
 
-        /* Input Form */
+        /* Form Input Sesuai Game */
         .input-group { display: flex; gap: 10px; }
         input { flex: 1; padding: 14px; background: #1f2635; border: 1px solid #2d364d; border-radius: 10px; font-size: 14px; color: white; outline: none; }
         input:focus { border-color: #4ade80; }
         
-        /* 2. GRID SELECTION DIAMOND DENGAN GAMBAR */
+        /* GRID DAFTAR HARGA PAKET */
         .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; }
+        .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; display: flex; flex-direction: column; align-items: center; }
         .card-paket:hover { border-color: #4ade80; background: #1f2736; }
         .card-paket.selected { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 14px rgba(74,222,128,0.3); }
         
-        /* Gambar Diamond Asli */
-        .card-paket .diamond-img { width: 42px; height: 42px; background: url('https://pngall.com') center/contain no-repeat; margin-bottom: 8px; }
-        .card-paket.wdp .diamond-img { background: url('https://pngall.com') center/contain no-repeat; }
-        
+        .card-paket .diamond-icon { font-size: 28px; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
         .card-paket .dm { font-size: 13px; color: #f3f4f6; display: block; margin-bottom: 4px; font-weight: 600; }
         .card-paket .harga { font-size: 14px; color: #4ade80; display: block; font-weight: 800; }
         .card-paket .coret { font-size: 11px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 2px; }
         .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
         
-        /* Tombol Utama */
-        .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); margin-bottom: 12px; }
-        .btn-wa-manual { width: 100%; background: #0284c7; color: white; border: none; padding: 14px; font-size: 14px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(2,132,199,0.3); }
+        /* Tombol Transaksi */
+        .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); margin-bottom: 12px; }
+        .btn-order:hover { background: #20ba5a; }
+        .btn-wa-manual { width: 100%; background: #0284c7; color: white; border: none; padding: 14px; font-size: 13px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px; box-shadow: 0 4px 12px rgba(2,132,199,0.3); }
 
-        /* ALL PAYMENT */
-        .payment-section { text-align: center; border-top: 1px solid #2d364d; padding-top: 20px; margin-top: 10px; }
-        .payment-title { font-size: 14px; font-weight: 800; color: #ffffff; margin-bottom: 15px; letter-spacing: 2px; }
-        .grid-pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
-        .pay-badge { width: 100%; background: white; padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: #111827; height: 32px; box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        /* ALL PAYMENT AREA */
+        .payment-section { text-align: center; padding-top: 10px; }
+        .payment-title { font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 15px; letter-spacing: 2px; text-transform: uppercase; }
+        .grid-pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; width: 100%; }
+        .pay-badge { background: #ffffff; padding: 8px 4px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 11px; color: #111827; height: 36px; box-shadow: 0 4px 10px rgba(0,0,0,0.4); width: 100%; text-transform: uppercase; }
         .pay-badge.qris { background: #a855f7; color: white; }
-        .pay-badge.bca { color: #003399; font-style: italic; font-size: 13px; }
+        .pay-badge.bca { color: #003399; font-style: italic; font-size: 13px; font-weight: bold; }
         .pay-badge.dana { background: #0086ff; color: white; font-size: 12px; }
-        .pay-badge.spay { background: #ff5722; color: white; font-size: 10px; }
+        .pay-badge.spay { background: #ff5722; color: white; font-size: 9px; }
         .pay-badge.ovo { background: #4c2a86; color: white; }
         .pay-badge.gopay { background: #00aed6; color: white; }
         .pay-badge.bri { color: #00569b; font-size: 13px; }
@@ -68,85 +63,103 @@
 </head>
 <body>
 
-<div class="hero-banner"></div>
-
 <div class="main-wrapper">
     <h1>NOVATOPUP</h1>
-    <p class="subtitle">⚡ HARGA RESELLER • GAME TERLENGKAP • INSTAN ⚡</p>
+    <p class="subtitle">⚡ HARGA RESELLER • GAME TERLENGKAP • INSTAN 24 JAM ⚡</p>
 
     <!-- LOBI ALL GAME -->
     <div class="container">
-        <span class="section-title">Pilih Game (All Game)</span>
+        <span class="section-title">Pilih Game (Lobi Game)</span>
         <div class="grid-games">
-            <div class="game-card active">
-                <span class="badge-discount">-16%</span>
-                <img src="https://wallpapers.com" alt="MLBB">
+            <div class="game-card active" id="btn-ml" onclick="gantiGame('ml')">
+                <span class="badge-discount">PROMO</span>
+                <span class="game-icon">⚔️</span>
                 <span>Mobile Legends</span>
             </div>
-            <div class="game-card" onclick="alert('Game Free Fire sedang maintenance sistem, silakan hubungi admin via WA!')">
-                <span class="badge-discount">-20%</span>
-                <img src="https://wallpapers.com" alt="FF">
+            <div class="game-card" id="btn-ff" onclick="gantiGame('ff')">
+                <span class="badge-discount">MURAH</span>
+                <span class="game-icon">🔫</span>
                 <span>Free Fire</span>
             </div>
-            <div class="game-card" onclick="alert('Game PUBG sedang maintenance sistem, silakan hubungi admin via WA!')">
-                <span class="badge-discount">-15%</span>
-                <img src="https://wallpapers.com" alt="PUBG">
+            <div class="game-card" id="btn-pubg" onclick="gantiGame('pubg')">
+                <span class="badge-discount">BOOM</span>
+                <span class="game-icon">🪂</span>
                 <span>PUBG Mobile</span>
             </div>
         </div>
     </div>
 
-    <!-- DATA AKUN -->
+    <!-- DATA AKUN (BERUBAH OTOMATIS) -->
     <div class="container">
-        <span class="section-title">1. Masukkan Data Akun</span>
+        <span class="section-title" id="title-akun">1. Masukkan Data Akun Mobile Legends</span>
         <div class="input-group">
-            <input type="number" id="userId" placeholder="Masukkan User ID Akun" required>
+            <input type="number" id="userId" placeholder="Masukkan User ID" required>
             <input type="number" id="zoneId" placeholder="Masukkan Zone ID" required>
         </div>
     </div>
 
-    <!-- NOMINAL DIAMOND YANG LENGKAP -->
+    <!-- DAFTAR PAKET & HARGA (BERUBAH OTOMATIS) -->
     <div class="container">
-        <span class="section-title">2. Pilih Nominal Diamond (MLBB Lengkap)</span>
-        <div class="grid-paket">
-            <div class="card-paket wdp" onclick="pilihPaket(this, 'Weekly Diamond Pass', 'Rp 26.500')">
-                <span class="badge-promo">BEST</span>
-                <div class="diamond-img"></div>
-                <span class="dm">Weekly Pass</span>
-                <span class="coret">Rp 32.000</span>
-                <span class="harga">Rp 26.500</span>
+        <span class="section-title" id="title-paket">2. Pilih Nominal Paket</span>
+        <div class="grid-paket" id="area-paket">
+            <!-- Paket default otomatis terisi lewat Javascript di bawah -->
+        </div>
+    </div>
+
+    <!-- TOMBOL TRANSAKSI -->
+    <div style="margin-bottom: 25px;">
+        <button class="btn-order" onclick="kirimOrder()">
+            🟢 Beli Sekarang via WhatsApp
+        </button>
+        <button class="btn-wa-manual" onclick="window.open('https://wa.me', '_blank')">
+            🔵 Hubungi Admin WA (Order Manual / Tanya Game Lain)
+        </button>
+    </div>
+
+    <!-- ALL PAYMENT MENERIMA SEMUA PEMBAYARAN -->
+    <div class="container">
+        <div class="payment-section">
+            <div class="payment-title">ALL PAYMENT</div>
+            <div class="grid-pay">
+                <div class="pay-badge qris">QRIS</div>
+                <div class="pay-badge bca">BCA</div>
+                <div class="pay-badge dana">DANA</div>
+                <div class="pay-badge spay">SPay</div>
+                <div class="pay-badge ovo">OVO</div>
+                <div class="pay-badge gopay">GOPAY</div>
+                <div class="pay-badge bri">BRI</div>
+                <div class="pay-badge mandiri">MANDIRI</div>
             </div>
-            <div class="card-paket" onclick="pilihPaket(this, '11 Diamond', 'Rp 3.000')">
-                <span class="badge-promo">-10%</span>
-                <div class="diamond-img"></div>
-                <span class="dm">11 Diamonds</span>
-                <span class="coret">Rp 4.500</span>
-                <span class="harga">Rp 3.000</span>
-            </div>
-            <div class="card-paket" onclick="pilihPaket(this, '50 Diamond', 'Rp 12.000')">
-                <span class="badge-promo">-15%</span>
-                <div class="diamond-img"></div>
-                <span class="dm">50 Diamonds</span>
-                <span class="coret">Rp 15.000</span>
-                <span class="harga">Rp 12.000</span>
-            </div>
-            <div class="card-paket" onclick="pilihPaket(this, '86 Diamond', 'Rp 19.900')">
-                <span class="badge-promo">-16%</span>
-                <div class="diamond-img"></div>
-                <span class="dm">86 Diamonds</span>
-                <span class="coret">Rp 24.000</span>
-                <span class="harga">Rp 19.900</span>
-            </div>
-            <div class="card-paket" onclick="pilihPaket(this, '172 Diamond', 'Rp 39.500')">
-                <span class="badge-promo">-16%</span>
-                <div class="diamond-img"></div>
-                <span class="dm">172 Diamonds</span>
-                <span class="coret">Rp 48.000</span>
-                <span class="harga">Rp 39.500</span>
-            </div>
-            <div class="card-paket" onclick="pilihPaket(this, '257 Diamond', 'Rp 59.000')">
-                <span class="badge-promo">-16%</span>
-                <div class="diamond-img"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Data Harga Murah & Paket Untung untuk masing-masing game
+    const dataProduk = {
+        ml: {
+            titleAkun: "1. Masukkan Data Akun Mobile Legends",
+            titlePaket: "2. Pilih Nominal Diamond (MLBB Murah)",
+            showZone: true,
+            items: [
+                { name: "Weekly Diamond Pass", harga: "Rp 26.500", coret: "Rp 32.000", badge: "BEST", icon: "🎫" },
+                { name: "86 Diamonds", harga: "Rp 19.900", coret: "Rp 24.000", badge: "-15%", icon: "💎" },
+                { name: "172 Diamonds", harga: "Rp 39.500", coret: "Rp 48.000", badge: "-15%", icon: "💎" },
+                { name: "257 Diamonds", harga: "Rp 59.000", coret: "Rp 72.000", badge: "-15%", icon: "💎" },
+                { name: "344 Diamonds", harga: "Rp 78.800", coret: "Rp 95.000", badge: "BOOM", icon: "💎" },
+                { name: "706 Diamonds", harga: "Rp 159.000", coret: "Rp 190.000", badge: "BEST", icon: "💎" }
+            ]
+        },
+        ff: {
+            titleAkun: "1. Masukkan Player ID Free Fire",
+            titlePaket: "2. Pilih Nominal Diamond (Free Fire Murah)",
+            showZone: false,
+            items: [
+                { name: "50 Diamonds", harga: "Rp 7.000", coret: "Rp 10.000", badge: "PROMO", icon: "🔥" },
+                { name: "70 Diamonds", harga: "Rp 9.500", coret: "Rp 13.000", badge: "MURAH", icon: "🔥" },
+                { name: "140 Diamonds", harga: "Rp 18.800", coret: "Rp 25.000", badge: "BEST", icon: "🔥" },
+                { name: "355 Diamonds", harga: "Rp 46.900", coret: "Rp 60.000", badge: "HEMAT", icon: "🔥" },
+
 
 
 
