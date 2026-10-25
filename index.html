@@ -3,26 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaTopup - Top Up Mobile Legends Murah</title>
+  <title>NovaTopup - Top Up Mobile Legends Murah & Lengkap</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
     body { background-color: #f4f6f9; color: #333; padding: 20px; }
     .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
     h1 { text-align: center; color: #1e3a8a; margin-bottom: 5px; }
     p.subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
-    .section-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #1e3a8a; display: block; }
-    .input-group { display: flex; gap: 10px; margin-bottom: 25px; }
+    .section-title { font-size: 16px; font-weight: bold; margin: 25px 0 10px 0; color: #1e3a8a; display: block; border-left: 4px solid #1e3a8a; padding-left: 8px; }
+    .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
     input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
     input:focus { border-color: #1e3a8a; }
-    .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
+    
+    /* Grid Pilihan Diamond */
+    .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .card-paket { border: 2px solid #e5e7eb; border-radius: 10px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 4px; }
     .card-paket:hover { border-color: #3b82f6; background: #eff6ff; }
     .card-paket.selected { border-color: #1e3a8a; background: #dbeafe; font-weight: bold; }
-    .card-paket .dm { font-size: 16px; color: #111827; display: block; margin-bottom: 4px; }
+    .card-paket .dm { font-size: 14px; color: #111827; display: block; margin-bottom: 2px; }
     .card-paket .harga { font-size: 13px; color: #059669; font-weight: bold; }
     .card-paket .coret { font-size: 11px; color: #9ca3af; text-decoration: line-through; }
-    .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 9px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
-    .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+    .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
+    
+    /* Grid Pilihan Metode Pembayaran */
+    .grid-bayar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .card-bayar { border: 2px solid #e5e7eb; border-radius: 8px; padding: 12px; text-align: left; cursor: pointer; transition: all 0.2s; background: #fff; display: flex; flex-direction: column; gap: 2px; }
+    .card-bayar:hover { border-color: #3b82f6; background: #f8fafc; }
+    .card-bayar.selected { border-color: #059669; background: #ecfdf5; font-weight: bold; }
+    .card-bayar .metode-nama { font-size: 14px; color: #1f2937; font-weight: 600; }
+    .card-bayar .metode-ket { font-size: 11px; color: #6b7280; }
+
+    /* Tombol Transaksi */
+    .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; margin-top: 25px; }
     .btn-order:hover { background: #128c7e; }
   </style>
 </head>
@@ -32,45 +44,116 @@
     <h1>NovaTopup</h1>
     <p class="subtitle">Top Up Mobile Legends Murah, Cepat, dan Aman</p>
 
+    <!-- 1. Form Input Data Akun -->
     <div class="section-title">1. Masukkan Data Akun</div>
     <div class="input-group">
       <input type="number" id="userId" placeholder="Masukkan User ID" required>
       <input type="number" id="zoneId" placeholder="Zone ID" required>
     </div>
 
+    <!-- 2. Pilihan Daftar Harga Diamond Murah & Lengkap -->
     <div class="section-title">2. Pilih Nominal Diamond</div>
     <div class="grid-paket">
       <div class="card-paket" onclick="selectPaket(this)">
         <div class="badge-promo">PROMO</div>
-        <span class="dm">86 Diamonds</span>
+        <span class="dm">Weekly Diamond Pass</span>
+        <span class="coret">Rp 33.000</span>
+        <span class="harga">Rp 27.800</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">12 Diamonds</span>
+        <span class="coret">Rp 5.000</span>
+        <span class="harga">Rp 3.000</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">28 Diamonds</span>
+        <span class="coret">Rp 10.000</span>
+        <span class="harga">Rp 7.200</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">50 Diamonds</span>
+        <span class="coret">Rp 16.500</span>
+        <span class="harga">Rp 12.500</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <div class="badge-promo">HOT</div>
+        <span class="dm">85 Diamonds</span>
         <span class="coret">Rp 25.000</span>
-        <span class="harga">Rp 19.500</span>
+        <span class="harga">Rp 19.900</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">170 Diamonds</span>
+        <span class="coret">Rp 48.000</span>
+        <span class="harga">Rp 39.500</span>
       </div>
       <div class="card-paket" onclick="selectPaket(this)">
         <div class="badge-promo">BEST SELLER</div>
-        <span class="dm">172 Diamonds</span>
-        <span class="coret">Rp 50.000</span>
-        <span class="harga">Rp 39.000</span>
+        <span class="dm">296 Diamonds</span>
+        <span class="coret">Rp 82.000</span>
+        <span class="harga">Rp 69.800</span>
       </div>
       <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">257 Diamonds</span>
-        <span class="coret">Rp 75.000</span>
-        <span class="harga">Rp 58.500</span>
+        <span class="dm">420 Diamonds</span>
+        <span class="coret">Rp 115.000</span>
+        <span class="harga">Rp 98.000</span>
       </div>
       <div class="card-paket" onclick="selectPaket(this)">
         <div class="badge-promo">HEMAT</div>
-        <span class="dm">706 Diamonds</span>
-        <span class="coret">Rp 200.000</span>
-        <span class="harga">Rp 155.000</span>
+        <span class="dm">568 Diamonds</span>
+        <span class="coret">Rp 155.000</span>
+        <span class="harga">Rp 132.500</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">875 Diamonds</span>
+        <span class="coret">Rp 240.000</span>
+        <span class="harga">Rp 205.000</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">2010 Diamonds</span>
+        <span class="coret">Rp 540.000</span>
+        <span class="harga">Rp 463.000</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <div class="badge-promo">SUPER SULTAN</div>
+        <span class="dm">4830 Diamonds</span>
+        <span class="coret">Rp 1.250.000</span>
+        <span class="harga">Rp 1.095.000</span>
       </div>
     </div>
 
-    <div class="section-title">3. Hubungi Admin via WhatsApp</div>
-    <div style="text-align: center; margin-top: 15px;">
-      <button onclick="kirimOrder()" class="btn-order">
-        Beli Sekarang via WhatsApp
-      </button>
+    <!-- 3. Integrasi Pilihan Metode Pembayaran Beragam -->
+    <div class="section-title">3. Pilih Metode Pembayaran</div>
+    <div class="grid-bayar">
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">DANA</span>
+        <span class="metode-ket">E-Wallet Instan / QRIS</span>
+      </div>
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">OVO</span>
+        <span class="metode-ket">E-Wallet Pembayaran Cepat</span>
+      </div>
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">GOPAY</span>
+        <span class="metode-ket">E-Wallet Mandiri / Gopay</span>
+      </div>
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">ShopeePay</span>
+        <span class="metode-ket">Saldo E-Wallet Shopee</span>
+      </div>
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">Transfer Bank (BCA / Mandiri)</span>
+        <span class="metode-ket">Transfer & Cek Manual Admin</span>
+      </div>
+      <div class="card-bayar" onclick="selectBayar(this)">
+        <span class="metode-nama">Alfamart / Indomaret</span>
+        <span class="metode-ket">Bayar Cash Lewat Kasir Retail</span>
+      </div>
     </div>
+
+    <!-- 4. Tombol Eksekusi Aksi -->
+    <button onclick="kirimOrder()" class="btn-order">
+      Beli Sekarang via WhatsApp
+    </button>
   </div>
 
   <script>
@@ -80,10 +163,17 @@
       element.classList.add('selected');
     }
 
+    function selectBayar(element) {
+      const allPayments = document.querySelectorAll('.card-bayar');
+      allPayments.forEach(pay => pay.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
     function kirimOrder() {
       const userId = document.getElementById('userId').value;
       const zoneId = document.getElementById('zoneId').value;
       const selectedPaket = document.querySelector('.card-paket.selected');
+      const selectedBayar = document.querySelector('.card-bayar.selected');
 
       if (!userId || !zoneId) {
         alert('Silakan masukkan User ID dan Zone ID kamu terlebih dahulu!');
@@ -93,21 +183,28 @@
         alert('Silakan pilih nominal Diamond terlebih dahulu!');
         return;
       }
+      if (!selectedBayar) {
+        alert('Silakan pilih metode pembayaran terlebih dahulu!');
+        return;
+      }
 
       const namaPaket = selectedPaket.querySelector('.dm').innerText;
       const hargaPaket = selectedPaket.querySelector('.harga').innerText;
+      const metodeBayar = selectedBayar.querySelector('.metode-nama').innerText;
       const nomorAdmin = "6285213299945"; 
       
       const teksPesan = "Halo Admin NovaTopup, saya ingin order:\n\n" +
                         "• Game: Mobile Legends\n" +
                         "• User ID: " + userId + " (" + zoneId + ")\n" +
                         "• Paket: " + namaPaket + "\n" +
-                        "• Harga: " + hargaPaket + "\n\n" +
-                        "Mohon info detail pembayarannya. Terima kasih!";
+                        "• Harga: " + hargaPaket + "\n" +
+                        "• Metode Pembayaran: " + metodeBayar + "\n\n" +
+                        "Mohon info detail instruksi dan nomor rekening pembayarannya. Terima kasih!";
 
-      window.open("https://wa.me/" + nomorAdmin + "?text=" + encodeURIComponent(teksPesan), "_blank");
+      window.open("https://wa.me" + nomorAdmin + "?text=" + encodeURIComponent(teksPesan), "_blank");
     }
   </script>
 </body>
 </html>
+
 
