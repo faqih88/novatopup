@@ -1,210 +1,138 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaTopup - Top Up Mobile Legends Murah & Lengkap</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: #f4f6f9; color: #333; padding: 20px; }
-    .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-    h1 { text-align: center; color: #1e3a8a; margin-bottom: 5px; }
-    p.subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
-    .section-title { font-size: 16px; font-weight: bold; margin: 25px 0 10px 0; color: #1e3a8a; display: block; border-left: 4px solid #1e3a8a; padding-left: 8px; }
-    .input-group { display: flex; gap: 10px; margin-bottom: 15px; }
-    input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
-    input:focus { border-color: #1e3a8a; }
-    
-    /* Grid Pilihan Diamond */
-    .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    .card-paket { border: 2px solid #e5e7eb; border-radius: 10px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 4px; }
-    .card-paket:hover { border-color: #3b82f6; background: #eff6ff; }
-    .card-paket.selected { border-color: #1e3a8a; background: #dbeafe; font-weight: bold; }
-    .card-paket .dm { font-size: 14px; color: #111827; display: block; margin-bottom: 2px; }
-    .card-paket .harga { font-size: 13px; color: #059669; font-weight: bold; }
-    .card-paket .coret { font-size: 11px; color: #9ca3af; text-decoration: line-through; }
-    .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
-    
-    /* Grid Pilihan Metode Pembayaran */
-    .grid-bayar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .card-bayar { border: 2px solid #e5e7eb; border-radius: 8px; padding: 12px; text-align: left; cursor: pointer; transition: all 0.2s; background: #fff; display: flex; flex-direction: column; gap: 2px; }
-    .card-bayar:hover { border-color: #3b82f6; background: #f8fafc; }
-    .card-bayar.selected { border-color: #059669; background: #ecfdf5; font-weight: bold; }
-    .card-bayar .metode-nama { font-size: 14px; color: #1f2937; font-weight: 600; }
-    .card-bayar .metode-ket { font-size: 11px; color: #6b7280; }
-
-    /* Tombol Transaksi */
-    .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; margin-top: 25px; }
-    .btn-order:hover { background: #128c7e; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaTopup | Premium & Instant Game Refill</title>
+    <!-- Tailwind CSS v4 -->
+    <script src="https://jsdelivr.net"></script>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
 </head>
-<body>
+<body class="bg-gray-950 text-gray-100 min-h-screen">
 
-  <div class="container">
-    <h1>NovaTopup</h1>
-    <p class="subtitle">Top Up Mobile Legends Murah, Cepat, dan Aman</p>
+    <!-- Header Navbar -->
+    <nav class="bg-gray-900 border-b border-gray-800 p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-extrabold text-amber-500 tracking-wider flex items-center">
+                <i class="fa-solid fa-bolt-lightning mr-2 animate-bounce"></i>NovaTopup
+            </h1>
+            <div class="flex items-center space-x-2">
+                <span class="text-[10px] bg-amber-500 text-gray-900 font-bold px-2 py-1 rounded-md">
+                    HARGA RESELLER UNIPIN
+                </span>
+                <span class="text-[10px] bg-green-500 text-gray-900 font-bold px-2 py-1 rounded-md animate-pulse">
+                    OTOMATIS 1 DETIK
+                </span>
+            </div>
+        </div>
+    </nav>
 
-    <!-- 1. Form Input Data Akun -->
-    <div class="section-title">1. Masukkan Data Akun</div>
-    <div class="input-group">
-      <input type="number" id="userId" placeholder="Masukkan User ID" required>
-      <input type="number" id="zoneId" placeholder="Zone ID" required>
+    <!-- Banner & Komponen Gambar Game Utama -->
+    <div class="relative h-56 md:h-72 w-full overflow-hidden">
+        <!-- Gambar Background Banner Game -->
+        <img src="https://unsplash.com" alt="Gaming Banner" class="w-full h-full object-cover opacity-30">
+        <div class="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"></div>
+        
+        <div class="absolute bottom-4 left-4 right-4 flex items-center space-x-4">
+            <!-- Gambar Ikon Game MLBB Bulat ala Store Besar -->
+            <img src="https://unsplash.com" alt="Mobile Legends Icon" class="w-20 h-20 md:w-24 md:h-24 rounded-2xl border-2 border-amber-500 object-cover shadow-2xl">
+            <div>
+                <h2 class="text-xl md:text-2xl font-bold text-white tracking-wide">Mobile Legends: Bang Bang</h2>
+                <p class="text-xs text-amber-400 font-medium mt-0.5"><i class="fa-solid fa-shield-halved mr-1"></i> Jalur Kilat API & Legal 100%</p>
+                <p class="text-[11px] text-gray-400 mt-1">Proses instan masuk ke akun tanpa penundaan menit.</p>
+            </div>
+        </div>
     </div>
 
-    <!-- 2. Pilihan Daftar Harga Diamond Murah & Lengkap -->
-    <div class="section-title">2. Pilih Nominal Diamond</div>
-    <div class="grid-paket">
-      <div class="card-paket" onclick="selectPaket(this)">
-        <div class="badge-promo">PROMO</div>
-        <span class="dm">Weekly Diamond Pass</span>
-        <span class="coret">Rp 33.000</span>
-        <span class="harga">Rp 27.800</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">12 Diamonds</span>
-        <span class="coret">Rp 5.000</span>
-        <span class="harga">Rp 3.000</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">28 Diamonds</span>
-        <span class="coret">Rp 10.000</span>
-        <span class="harga">Rp 7.200</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">50 Diamonds</span>
-        <span class="coret">Rp 16.500</span>
-        <span class="harga">Rp 12.500</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <div class="badge-promo">HOT</div>
-        <span class="dm">85 Diamonds</span>
-        <span class="coret">Rp 25.000</span>
-        <span class="harga">Rp 19.900</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">170 Diamonds</span>
-        <span class="coret">Rp 48.000</span>
-        <span class="harga">Rp 39.500</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <div class="badge-promo">BEST SELLER</div>
-        <span class="dm">296 Diamonds</span>
-        <span class="coret">Rp 82.000</span>
-        <span class="harga">Rp 69.800</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">420 Diamonds</span>
-        <span class="coret">Rp 115.000</span>
-        <span class="harga">Rp 98.000</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <div class="badge-promo">HEMAT</div>
-        <span class="dm">568 Diamonds</span>
-        <span class="coret">Rp 155.000</span>
-        <span class="harga">Rp 132.500</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">875 Diamonds</span>
-        <span class="coret">Rp 240.000</span>
-        <span class="harga">Rp 205.000</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <span class="dm">2010 Diamonds</span>
-        <span class="coret">Rp 540.000</span>
-        <span class="harga">Rp 463.000</span>
-      </div>
-      <div class="card-paket" onclick="selectPaket(this)">
-        <div class="badge-promo">SUPER SULTAN</div>
-        <span class="dm">4830 Diamonds</span>
-        <span class="coret">Rp 1.250.000</span>
-        <span class="harga">Rp 1.095.000</span>
-      </div>
-    </div>
+    <!-- Layout Grid Utama -->
+    <main class="container mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Sisi Kiri: Form Data Akun & Pilihan Produk Murah -->
+        <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Langkah 1: Pengisian ID Game -->
+            <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 shadow-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-amber-500 text-gray-950 font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span>
+                    <h3 class="text-base font-semibold text-white">Masukkan Data Akun MLBB</h3>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-1">User ID</label>
+                        <input type="number" id="userId" placeholder="Contoh: 12345678" class="w-full bg-gray-950 border border-gray-700 rounded-xl p-3 focus:outline-none focus:border-amber-500 text-sm text-white transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-1">Zone ID</label>
+                        <input type="number" id="zoneId" placeholder="Contoh: 1234" class="w-full bg-gray-950 border border-gray-700 rounded-xl p-3 focus:outline-none focus:border-amber-500 text-sm text-white transition-colors">
+                    </div>
+                </div>
+            </div>
 
-    <!-- 3. Integrasi Pilihan Metode Pembayaran Beragam -->
-    <div class="section-title">3. Pilih Metode Pembayaran</div>
-    <div class="grid-bayar">
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">DANA</span>
-        <span class="metode-ket">E-Wallet Instan / QRIS</span>
-      </div>
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">OVO</span>
-        <span class="metode-ket">E-Wallet Pembayaran Cepat</span>
-      </div>
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">GOPAY</span>
-        <span class="metode-ket">E-Wallet Mandiri / Gopay</span>
-      </div>
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">ShopeePay</span>
-        <span class="metode-ket">Saldo E-Wallet Shopee</span>
-      </div>
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">Transfer Bank (BCA / Mandiri)</span>
-        <span class="metode-ket">Transfer & Cek Manual Admin</span>
-      </div>
-      <div class="card-bayar" onclick="selectBayar(this)">
-        <span class="metode-nama">Alfamart / Indomaret</span>
-        <span class="metode-ket">Bayar Cash Lewat Kasir Retail</span>
-      </div>
-    </div>
+            <!-- Langkah 2: Pilihan Diamond Dibandrol Harga Murah -->
+            <div class="bg-gray-900 p-5 rounded-2xl border border-gray-800 shadow-xl">
+                <div class="flex items-center space-x-3 mb-4">
+                    <span class="bg-amber-500 text-gray-955 font-bold w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span>
+                    <h3 class="text-base font-semibold text-white">Pilih Nominal Diamond (Harga Murah)</h3>
+                </div>
+                
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <!-- Item List Murah -->
+                    <button onclick="selectProduct('3 Diamonds', 1000)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="flex justify-between items-start">
+                            <span class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>3 Dms</span>
+                            <span class="text-[9px] bg-red-950 text-red-400 px-1.5 py-0.5 rounded font-bold">Promo</span>
+                        </div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 1.000</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 1.500</div>
+                    </button>
 
-    <!-- 4. Tombol Eksekusi Aksi -->
-    <button onclick="kirimOrder()" class="btn-order">
-      Beli Sekarang via WhatsApp
-    </button>
-  </div>
+                    <button onclick="selectProduct('5 Diamonds', 1350)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>5 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 1.350</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 2.000</div>
+                    </button>
 
-  <script>
-    function selectPaket(element) {
-      const allCards = document.querySelectorAll('.card-paket');
-      allCards.forEach(card => card.classList.remove('selected'));
-      element.classList.add('selected');
-    }
+                    <button onclick="selectProduct('12 Diamonds', 3200)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>12 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 3.200</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 4.500</div>
+                    </button>
 
-    function selectBayar(element) {
-      const allPayments = document.querySelectorAll('.card-bayar');
-      allPayments.forEach(pay => pay.classList.remove('selected'));
-      element.classList.add('selected');
-    }
+                    <button onclick="selectProduct('28 Diamonds', 7300)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>28 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 7.300</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 10.000</div>
+                    </button>
 
-    function kirimOrder() {
-      const userId = document.getElementById('userId').value;
-      const zoneId = document.getElementById('zoneId').value;
-      const selectedPaket = document.querySelector('.card-paket.selected');
-      const selectedBayar = document.querySelector('.card-bayar.selected');
+                    <button onclick="selectProduct('59 Diamonds', 15200)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>59 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 15.200</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 19.500</div>
+                    </button>
 
-      if (!userId || !zoneId) {
-        alert('Silakan masukkan User ID dan Zone ID kamu terlebih dahulu!');
-        return;
-      }
-      if (!selectedPaket) {
-        alert('Silakan pilih nominal Diamond terlebih dahulu!');
-        return;
-      }
-      if (!selectedBayar) {
-        alert('Silakan pilih metode pembayaran terlebih dahulu!');
-        return;
-      }
+                    <button onclick="selectProduct('85 Diamonds', 21800)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>85 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 21.800</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 28.000</div>
+                    </button>
 
-      const namaPaket = selectedPaket.querySelector('.dm').innerText;
-      const hargaPaket = selectedPaket.querySelector('.harga').innerText;
-      const metodeBayar = selectedBayar.querySelector('.metode-nama').innerText;
-      const nomorAdmin = "6285213299945"; 
-      
-      const teksPesan = "Halo Admin NovaTopup, saya ingin order:\n\n" +
-                        "• Game: Mobile Legends\n" +
-                        "• User ID: " + userId + " (" + zoneId + ")\n" +
-                        "• Paket: " + namaPaket + "\n" +
-                        "• Harga: " + hargaPaket + "\n" +
-                        "• Metode Pembayaran: " + metodeBayar + "\n\n" +
-                        "Mohon info detail instruksi dan nomor rekening pembayarannya. Terima kasih!";
+                    <button onclick="selectProduct('170 Diamonds', 43500)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>170 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 43.500</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 55.000</div>
+                    </button>
 
-      window.open("https://wa.me" + nomorAdmin + "?text=" + encodeURIComponent(teksPesan), "_blank");
-    }
-  </script>
-</body>
-</html>
+                    <button onclick="selectProduct('296 Diamonds', 75000)" class="product-card bg-gray-950 border border-gray-800 p-3 rounded-xl text-left transition-all hover:border-amber-500 group relative overflow-hidden">
+                        <div class="text-amber-500 font-bold text-sm tracking-wide"><i class="fa-solid fa-gem text-xs mr-1"></i>296 Dms</div>
+                        <div class="text-xs font-semibold text-gray-300 mt-2">Rp 75.000</div>
+                        <div class="text-[9px] text-gray-500 line-through">Rp 92.000</div>
+                    </button>
+
+
 
 
