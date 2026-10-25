@@ -3,145 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTopup - Tempat Top Up Game Termurah & Instan</title>
-    <!-- Tailwind CSS untuk Layout Modern & Responsif -->
-    <script src="https://tailwindcss.com"></script>
-    <!-- Font Inter & Font Awesome untuk Ikon -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="https://cloudflare.com">
-    
+    <title>NovaTopup - Tempat Top Up Game Termurah</title>
     <style>
-        body { 
-            background-color: #0b0f19; 
-            color: #f8fafc; 
-            font-family: 'Inter', sans-serif; 
-        }
-        .active-tab {
-            background-color: #84cc16 !important;
-            color: #000000 !important;
-            font-weight: 700;
-        }
-        .card-active {
-            border-color: #84cc16 !important;
-            background-color: #1e293b / 40 !important;
-        }
-        /* Custom scrollbar halus */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; rounded: 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: #0b0e14; color: #ffffff; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: #141822; padding: 25px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 1px solid #1f2635; }
+        h1 { text-align: center; color: #4ade80; font-size: 28px; letter-spacing: 1px; font-weight: 800; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #ef4444; margin-bottom: 30px; font-size: 13px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.5px; }
+        .section-title { font-size: 15px; font-weight: bold; margin-bottom: 12px; color: #4ade80; display: block; text-transform: uppercase; }
+        .input-group { display: flex; gap: 12px; margin-bottom: 30px; }
+        input { flex: 1; padding: 14px; background: #1f2635; border: 1px solid #2d364d; border-radius: 10px; font-size: 14px; color: white; outline: none; transition: border 0.2s; }
+        input:focus { border-color: #4ade80; }
+        input::placeholder { color: #6b7280; }
+        .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 30px; }
+        .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; overflow: hidden; }
+        .card-paket:hover { border-color: #4ade80; background: #1f2736; }
+        .card-paket.selected { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 12px rgba(74,222,128,0.2); }
+        .card-paket .dm { font-size: 15px; color: #f3f4f6; display: block; margin-bottom: 6px; font-weight: 600; }
+        .card-paket .harga { font-size: 15px; color: #4ade80; display: block; font-weight: bold; }
+        .card-paket .coret { font-size: 11px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 2px; font-weight: bold; }
+        .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 9px; padding: 2px 7px; border-bottom-left-radius: 8px; font-weight: bold; letter-spacing: 0.5px; }
+        .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 10px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.3); margin-bottom: 35px; }
+        .btn-order:hover { background: #20ba5a; }
+        
+        /* Bagian Metode Pembayaran Ala PointGo */
+        .payment-section { text-align: center; border-top: 1px solid #2d364d; padding-top: 25px; }
+        .payment-title { font-size: 14px; font-weight: bold; color: #9ca3af; margin-bottom: 15px; letter-spacing: 1px; }
+        .grid-pay { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; justify-items: center; align-items: center; }
+        .pay-badge { width: 100%; max-width: 100px; background: white; padding: 6px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px; color: #111827; height: 32px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .pay-badge.qris { background: #a855f7; color: white; }
+        .pay-badge.bca { color: #003399; font-style: italic; font-size: 13px; }
+        .pay-badge.dana { background: #0086ff; color: white; font-size: 12px; }
+        .pay-badge.spay { background: #ff5722; color: white; font-size: 10px; }
+        .pay-badge.ovo { background: #4c2a86; color: white; }
+        .pay-badge.gopay { background: #00aed6; color: white; }
+        .pay-badge.bri { color: #00569b; font-size: 13px; }
+        .pay-badge.mandiri { color: #1c3f60; font-size: 10px; }
     </style>
 </head>
-<body class="antialiased pb-24">
+<body>
 
-    <!-- NAVBAR PREMIUM (Mirip PointGo) -->
-    <nav class="bg-[#0b0f19]/90 border-b border-slate-800/80 p-4 sticky top-0 z-50 backdrop-blur-md">
-        <div class="max-w-5xl mx-auto flex justify-between items-center">
-            <!-- Brand Logo -->
-            <div class="flex flex-col">
-                <h1 class="text-2xl font-extrabold text-lime-500 tracking-tighter leading-none">NOVA<span class="text-white">TOPUP</span></h1>
-                <span class="text-[9px] text-slate-400 font-bold tracking-widest mt-0.5">#BANYAKUNTUNGNYA</span>
-            </div>
-            <!-- Fitur Kanan -->
-            <div class="flex items-center gap-4 text-slate-300">
-                <button class="hover:text-lime-500 transition"><i class="fa-solid fa-magnifying-glass text-lg"></i></button>
-                <button class="hover:text-lime-500 transition"><i class="fa-solid fa-bars text-xl"></i></button>
-            </div>
+<div class="container">
+    <h1>NOVATOPUP</h1>
+    <p class="subtitle">🔥 HARGA HANCUR • GARANSI TERMURAH SE-INDONESIA</p>
+
+    <!-- Form ID -->
+    <span class="section-title">1. Masukkan Data Akun</span>
+    <div class="input-group">
+        <input type="number" id="userId" placeholder="User ID" required>
+        <input type="number" id="zoneId" placeholder="Zone ID" required>
+    </div>
+
+    <!-- Pilihan Paket -->
+    <span class="section-title">2. Pilih Nominal Diamond (Flash Deal)</span>
+    <div class="grid-paket">
+        <div class="card-paket" onclick="pilihPaket(this, '86 Diamond', 'Rp 15.500')">
+            <span class="badge-promo">-30%</span>
+            <span class="dm">💎 86 Diamonds</span>
+            <span class="coret">Rp 22.000</span>
+            <span class="harga">Rp 15.500</span>
         </div>
-    </nav>
-
-    <!-- KONTEN UTAMA -->
-    <main class="max-w-5xl mx-auto px-4 mt-6 space-y-8">
-
-        <!-- BANNER PROMO / SLIDER UTAMA -->
-        <div class="bg-gradient-to-br from-slate-900 via-[#111827] to-slate-900 rounded-3xl p-6 border border-slate-800/60 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="space-y-3 max-w-lg z-10 text-center md:text-left">
-                <span class="bg-lime-500/10 text-lime-400 border border-lime-500/20 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">Daily NovaTopup</span>
-                <h2 class="text-2xl md:text-4xl font-black text-white leading-tight">TEMPAT TOP UP GAME <span class="text-lime-500">TERMURAH!</span></h2>
-                <p class="text-xs md:text-sm text-slate-400 font-medium">Proses otomatis, aman, 24 jam non-stop dengan harga paling bersaing se-Indonesia.</p>
-            </div>
-            <img src="https://okezone.com" 
-                 alt="Promo" class="w-full md:w-80 h-44 object-cover rounded-2xl border border-slate-700/50 shadow-xl z-10">
+        <div class="card-paket" onclick="pilihPaket(this, '172 Diamond', 'Rp 31.000')">
+            <span class="badge-promo">-30%</span>
+            <span class="dm">💎 172 Diamonds</span>
+            <span class="coret">Rp 44.000</span>
+            <span class="harga">Rp 31.000</span>
         </div>
+        <div class="card-paket" onclick="pilihPaket(this, '257 Diamond', 'Rp 46.500')">
+            <span class="badge-promo">-30%</span>
+            <span class="dm">💎 257 Diamonds</span>
+            <span class="coret">Rp 65.000</span>
+            <span class="harga">Rp 46.500</span>
+        </div>
+        <div class="card-paket" onclick="pilihPaket(this, '344 Diamond', 'Rp 61.900')">
+            <span class="badge-promo">BOOM</span>
+            <span class="dm">💎 344 Diamonds</span>
+            <span class="coret">Rp 88.000</span>
+            <span class="harga">Rp 61.900</span>
+        </div>
+        <div class="card-paket" onclick="pilihPaket(this, '706 Diamond', 'Rp 122.500')">
+            <span class="badge-promo">LIMIT</span>
+            <span class="dm">💎 706 Diamonds</span>
+            <span class="coret">Rp 175.000</span>
+            <span class="harga">Rp 122.500</span>
+        </div>
+        <div class="card-paket" onclick="pilihPaket(this, '1050 Diamond', 'Rp 182.000')">
+            <span class="badge-promo">SADIS</span>
+            <span class="dm">💎 1050 Diamonds</span>
+            <span class="coret">Rp 260.000</span>
+            <span class="harga">Rp 182.000</span>
+        </div>
+    </div>
 
-        <!-- SECTION FLASH DEAL HARGANYA MIRING -->
-        <section class="space-y-3">
-            <div class="flex flex-wrap items-center gap-3">
-                <h3 class="text-xl font-black tracking-tight text-white uppercase italic">⚡ Flash Deal</h3>
-                <div class="bg-red-600 text-white font-bold text-sm px-3 py-1 rounded-lg flex items-center gap-1.5 shadow-md animate-pulse">
-                    <i class="fa-regular fa-clock"></i>
-                    <span id="countdownTimer">06:17:18</span>
-                </div>
-            </div>
+    <!-- Tombol Order -->
+    <button class="btn-order" onclick="kirimOrder()">
+        🟢 Beli Sekarang via WhatsApp
+    </button>
 
-            <!-- Grid Items Flash Deal Miring -->
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Item Flash 1 -->
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col justify-between group cursor-pointer" onclick="quickSelect('Mobile Legends', '3738 Diamonds', 'Rp 985.000')">
-                    <span class="absolute top-2 left-2 bg-lime-500 text-black font-extrabold text-[9px] px-2 py-0.5 rounded-md z-10">TERSISA : 14</span>
-                    <div class="rounded-xl overflow-hidden aspect-video relative mt-6">
-                        <img src="https://okezone.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    </div>
-                    <div class="mt-3 space-y-1">
-                        <p class="text-[11px] font-bold text-slate-200 line-clamp-1">3738 Diamonds (3247 + 491 Bonus)</p>
-                        <p class="text-[10px] text-slate-500 line-through">Rp 1.217.341</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-black text-lime-400">Rp 985.000</span>
-                            <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold">🔥 FLASH</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Item Flash 2 -->
-                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-3 relative overflow-hidden flex flex-col justify-between group cursor-pointer" onclick="quickSelect('Mobile Legends', '4588 Diamonds', 'Rp 1.199.000')">
-                    <span class="absolute top-2 left-2 bg-lime-500 text-black font-extrabold text-[9px] px-2 py-0.5 rounded-md z-10">TERSISA : 10</span>
-                    <div class="rounded-xl overflow-hidden aspect-video relative mt-6">
-                        <img src="https://okezone.com" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
-                    </div>
-                    <div class="mt-3 space-y-1">
-                        <p class="text-[11px] font-bold text-slate-200 line-clamp-1">4588 Diamonds (3919 + 669 Bonus)</p>
-                        <p class="text-[10px] text-slate-500 line-through">Rp 1.462.329</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs font-black text-lime-400">Rp 1.199.000</span>
-                            <span class="text-[9px] bg-amber-500/10 text-amber-400 border border-amber-500/20 px-1.5 py-0.5 rounded font-bold">🔥 FLASH</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Bagian Footer Channel Pembayaran Terjamin -->
+    <div class="payment-section">
+        <div class="payment-title">PEMBAYARAN TERJAMIN</div>
+        <div class="grid-pay">
+            <div class="pay-badge qris">QRIS</div>
+            <div class="pay-badge bca">BCA</div>
+            <div class="pay-badge dana">DANA</div>
+            <div class="pay-badge spay">ShopeePay</div>
+            <div class="pay-badge ovo">OVO</div>
+            <div class="pay-badge gopay">Gojek</div>
+            <div class="pay-badge bri">BRI</div>
+            <div class="pay-badge mandiri">mandırı</div>
+        </div>
+    </div>
+</div>
 
-        <!-- FORM ORDER LANGSUNG & PILIHAN HARGA MURAH MERIAH -->
-        <section class="bg-slate-900/70 border border-slate-800 rounded-3xl p-6 space-y-6">
-            <div class="border-b border-slate-800 pb-3">
-                <h4 class="text-lg font-black text-white flex items-center gap-2">
-                    <i class="fa-solid fa-gamepad text-lime-500"></i> Form Top Up Mobile Legends
-                </h4>
-                <p class="text-xs text-slate-400">Silakan isi data akun dan pilih paket diamond murah di bawah ini.</p>
-            </div>
-            
-            <!-- LANGKAH 1: ID AKUN -->
-            <div class="space-y-2">
-                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">1. Masukkan Data Akun</label>
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="number" id="userId" placeholder="User ID" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-lime-500 text-white transition">
-                    <input type="number" id="zoneId" placeholder="Zone ID (Server)" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-lime-500 text-white transition">
-                </div>
-            </div>
+<script>
+    let paketTerpilih = "";
+    let hargaTerpilih = "";
 
-            <!-- LANGKAH 2: PILIHAN DIAMOND HARGA AGEN -->
-            <div class="space-y-2">
-                <label class="block text-xs font-bold text-slate-400 uppercase tracking-wider">2. Pilih Nominal Paket (Murah Meriah)</label>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" id="packageGrid">
-                    
-                    <!-- Item 1 -->
-                    <div class="diamond-card border border-slate-800 bg-slate-950 p-4 rounded-xl cursor-pointer hover:border-lime-500 flex flex-col justify-between transition" onclick="selectItem('5 Diamonds', 'Rp 1.200', this)">
-                        <p class="text-xs font-bold text-white">💎 5 Diamonds</p>
-                        <p class="text-[11px] text-lime-400 font-bold mt-2">Rp 1.200</p>
-                    </div>
-                    <!-- Item 2 -->
-                    <div class="diamond-card border border-slate-800 bg-slate-950 p-4 rounded-xl cursor-pointer hover:border-lime-500 flex flex-col justify-between transition" onclick="selectItem('12 Diamonds', 'Rp 3.100', this)">
-                        <p class="text-xs font-bold text-white">💎 12 Diamonds</p>
-                        <p class="text-[11px] text-lime-400 font-bold mt-2">Rp 3.100</p>
-                    </div>
-                    <!-- Item 3 -->
+    function pilihPaket(elemen, namaPaket, harga) {
+        const semuaCard = document.querySelectorAll('.card-paket');
+        semuaCard.forEach(card => card.classList.remove('selected'));
+        elemen.classList.add('selected');
+        paketTerpilih = namaPaket;
+        hargaTerpilih = harga;
+    }
+
+    function kirimOrder() {
+        const userId = document.getElementById('userId').value;
+        const zoneId = document.getElementById('zoneId').value;
+        const nomorAdmin = "6285213299945"; 
+
+        if (!userId || !zoneId) {
+            alert("Harap isi User ID dan Zone ID Anda!");
+            return;
+        }
+        if (!paketTerpilih) {
+            alert("Harap pilih nominal diamond terlebih dahulu!");
+            return;
+        }
+
+        const teksPesan = `Halo Admin NovaTopup,%0A%0ASaya ingin membeli Diamond MLBB via Web Premium (Harga Hancur):%0A%0A- **User ID**: ${userId}%0A- **Zone ID**: ${zoneId}%0A- **Paket**: ${paketTerpilih}%0A- **Harga Super Murah**: ${hargaTerpilih}%0A%0AMohon kirimkan instruksi pembayarannya min!`;
+        window.open(`https://wa.me{nomorAdmin}?text=${teksPesan}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
+
 
 
 
