@@ -8,7 +8,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
         body { background-color: #0b0e14; color: #ffffff; padding-bottom: 30px; }
         
-        /* HEADER UTAMA */
         header { background: #141822; padding: 15px; border-bottom: 1px solid #1f2635; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 20px; font-weight: 900; color: #4ade80; letter-spacing: 1px; cursor: pointer; }
         .logo span { color: #ffffff; font-size: 11px; margin-left: 5px; font-weight: bold; border-left: 2px solid #2d364d; padding-left: 5px; }
@@ -21,9 +20,12 @@
         .main-title { font-size: 18px; font-weight: 800; color: #4ade80; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .grid-lobi { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 25px; }
-        .card-lobi { background: #141822; border: 1px solid #1f2635; border-radius: 12px; padding: 8px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
+        .card-lobi { background: #141822; border: 1px solid #1f2635; border-radius: 12px; padding: 12px 8px; text-align: center; cursor: pointer; transition: 0.2s; position: relative; }
         .card-lobi:hover { border-color: #4ade80; }
-        .card-lobi img { width: 100%; height: 60px; object-fit: cover; border-radius: 8px; margin-bottom: 6px; }
+        
+        /* Gambar Lobi Game SVG Anti Pecah */
+        .card-lobi .game-svg-box { width: 100%; height: 55px; background: #1a202c; border-radius: 8px; margin-bottom: 8px; display: flex; align-items: center; justify-content: center; }
+        .card-lobi .game-svg-box svg { width: 32px; height: 32px; fill: #4ade80; }
         .card-lobi span { font-size: 11px; font-weight: bold; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .tag-diskon { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 8px; padding: 2px 5px; border-bottom-left-radius: 6px; font-weight: bold; }
 
@@ -53,7 +55,7 @@
         .card-paket { border: 1px solid #2d364d; border-radius: 12px; padding: 14px; text-align: center; cursor: pointer; transition: all 0.2s; background: #1a202c; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .card-paket.selected { border-color: #4ade80; background: #1e293b; box-shadow: 0 0 14px rgba(74,222,128,0.25); }
         
-        .card-paket img { width: 44px; height: 40px; object-fit: contain; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
+        .card-paket .item-icon { font-size: 26px; margin-bottom: 6px; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); }
         .card-paket .dm-title { font-size: 12px; color: #f3f4f6; display: block; margin-bottom: 3px; font-weight: 600; line-height: 1.3; }
         .card-paket .harga-diskon { font-size: 14px; color: #4ade80; display: block; font-weight: 800; }
         .card-paket .harga-asli { font-size: 11px; color: #ef4444; text-decoration: line-through; display: block; margin-bottom: 2px; }
@@ -62,7 +64,7 @@
         /* Tombol Beli */
         .btn-submit { width: 100%; background: #25d366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 10px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,211,102,0.4); margin-bottom: 12px; }
 
-        /* ================= FOOTER ALL PAYMENT COMPLETE ================= */
+        /* FOOTER ALL PAYMENT COMPLETE */
         .payment-box { text-align: center; padding-top: 5px; }
         .payment-header { font-size: 14px; font-weight: 800; color: #4ade80; margin-bottom: 15px; letter-spacing: 2px; }
         .payment-label { font-size: 10px; color: #9ca3af; text-align: left; margin: 12px 0 6px 0; font-weight: bold; letter-spacing: 0.5px; }
@@ -93,19 +95,25 @@
             <!-- Mobile Legends -->
             <div class="card-lobi" onclick="masukGame('ml')">
                 <span class="tag-diskon">-16%</span>
-                <img src="https://wallpapers.com" alt="MLBB">
+                <div class="game-svg-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L2 22h20L12 2zm0 3.99L19.51 20H4.49L12 5.99zM11 11v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+                </div>
                 <span>Mobile Legends</span>
             </div>
             <!-- Free Fire -->
             <div class="card-lobi" onclick="masukGame('ff')">
                 <span class="tag-diskon">-16%</span>
-                <img src="https://wallpapers.com" alt="FF">
+                <div class="game-svg-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                </div>
                 <span>Free Fire</span>
             </div>
             <!-- PUBG Mobile -->
             <div class="card-lobi" onclick="masukGame('pubg')">
                 <span class="tag-diskon">-10%</span>
-                <img src="https://wallpapers.com" alt="PUBG">
+                <div class="game-svg-box">
+                    <svg viewBox="0 0 24 24"><path d="M12 2L1 21h22L12 2zm0 4l7.5 13h-15L12 6z"/></svg>
+                </div>
                 <span>PUBG Mobile</span>
             </div>
         </div>
@@ -136,14 +144,4 @@
             </div>
         </div>
 
-        <!-- Bagian Daftar Diamond -->
-        <div class="box-section">
-            <div class="step-num">3</div>
-            <div class="section-label" id="label-langkah-paket">Pilih Nominal Item</div>
-            <div class="grid-paket" id="area-paket">
-                <!-- Diisi via JavaScript -->
-            </div>
-        </div>
-
-        <!-- Tombol Transaksi -->
 
