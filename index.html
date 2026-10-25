@@ -1,122 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaTopup - Top Up Mobile Legends Murah</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        body { background-color: #f4f6f9; color: #333; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { text-align: center; color: #1e3a8a; margin-bottom: 5px; }
-        p.subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
-        .section-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #1e3a8a; display: block; }
-        .input-group { display: flex; gap: 10px; margin-bottom: 25px; }
-        input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
-        input:focus { border-color: #1e3a8a; }
-        .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
-        .card-paket { border: 2px solid #e5e7eb; border-radius: 10px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; overflow: hidden; }
-        .card-paket:hover { border-color: #3b82f6; background: #eff6ff; }
-        .card-paket.selected { border-color: #1e3a8a; background: #dbeafe; font-weight: bold; }
-        .card-paket .dm { font-size: 16px; color: #111827; display: block; margin-bottom: 4px; }
-        .card-paket .harga { font-size: 13px; color: #059669; display: block; }
-        .card-paket .coret { font-size: 11px; color: #9ca3af; text-decoration: line-through; display: block; margin-bottom: 2px; }
-        .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 9px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
-        .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-order:hover { background: #20ba5a; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTopup - Top Up Mobile Legends Murah</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+    body { background-color: #f4f6f9; color: #333; padding: 20px; }
+    .container { max-width: 600px; margin: 0 auto; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #1e3a8a; margin-bottom: 5px; }
+    p.subtitle { text-align: center; color: #666; margin-bottom: 25px; font-size: 14px; }
+    .section-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; color: #1e3a8a; display: block; }
+    .input-group { display: flex; gap: 10px; margin-bottom: 25px; }
+    input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; outline: none; }
+    input:focus { border-color: #1e3a8a; }
+    .grid-paket { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 25px; }
+    .card-paket { border: 2px solid #e5e7eb; border-radius: 10px; padding: 15px; text-align: center; cursor: pointer; transition: all 0.2s; background: #fff; position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 4px; }
+    .card-paket:hover { border-color: #3b82f6; background: #eff6ff; }
+    .card-paket.selected { border-color: #1e3a8a; background: #dbeafe; font-weight: bold; }
+    .card-paket .dm { font-size: 16px; color: #111827; display: block; margin-bottom: 4px; }
+    .card-paket .harga { font-size: 13px; color: #059669; font-weight: bold; }
+    .card-paket .coret { font-size: 11px; color: #9ca3af; text-decoration: line-through; }
+    .badge-promo { position: absolute; top: 0; right: 0; background: #ef4444; color: white; font-size: 9px; padding: 2px 6px; border-bottom-left-radius: 8px; font-weight: bold; }
+    .btn-order { width: 100%; background: #25d366; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 8px; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
+    .btn-order:hover { background: #128c7e; }
+  </style>
 </head>
 <body>
 
-<div class="container">
+  <div class="container">
     <h1>NovaTopup</h1>
-    <p class="subtitle">🚀 Top Up Mobile Legends Termurah & Tercepat</p>
+    <p class="subtitle">Top Up Mobile Legends Murah, Cepat, dan Aman</p>
 
-    <!-- Form ID -->
-    <span class="section-title">1. Masukkan Data Akun</span>
+    <div class="section-title">1. Masukkan Data Akun</div>
     <div class="input-group">
-        <input type="number" id="userId" placeholder="User ID (Contoh: 12345678)" required>
-        <input type="number" id="zoneId" placeholder="Zone ID (Contoh: 1234)" required>
+      <input type="number" id="userId" placeholder="Masukkan User ID" required>
+      <input type="number" id="zoneId" placeholder="Zone ID" required>
     </div>
 
-    <!-- Pilihan Paket -->
-    <span class="section-title">2. Pilih Nominal Diamond (Harga Promo)</span>
+    <div class="section-title">2. Pilih Nominal Diamond</div>
     <div class="grid-paket">
-        <div class="card-paket" onclick="pilihPaket(this, '86 Diamond', 'Rp 18.500')">
-            <span class="badge-promo">PROMO</span>
-            <span class="dm">💎 86 Diamonds</span>
-            <span class="coret">Rp 22.000</span>
-            <span class="harga">Rp 18.500</span>
-        </div>
-        <div class="card-paket" onclick="pilihPaket(this, '172 Diamond', 'Rp 36.800')">
-            <span class="badge-promo">PROMO</span>
-            <span class="dm">💎 172 Diamonds</span>
-            <span class="coret">Rp 44.000</span>
-            <span class="harga">Rp 36.800</span>
-        </div>
-        <div class="card-paket" onclick="pilihPaket(this, '257 Diamond', 'Rp 55.000')">
-            <span class="badge-promo">PROMO</span>
-            <span class="dm">💎 257 Diamonds</span>
-            <span class="coret">Rp 65.000</span>
-            <span class="harga">Rp 55.000</span>
-        </div>
-        <div class="card-paket" onclick="pilihPaket(this, '344 Diamond', 'Rp 73.500')">
-            <span class="badge-promo">BEST SELLER</span>
-            <span class="dm">💎 344 Diamonds</span>
-            <span class="coret">Rp 88.000</span>
-            <span class="harga">Rp 73.500</span>
-        </div>
-        <div class="card-paket" onclick="pilihPaket(this, '706 Diamond', 'Rp 148.000')">
-            <span class="badge-promo">HEMAT</span>
-            <span class="dm">💎 706 Diamonds</span>
-            <span class="coret">Rp 175.000</span>
-            <span class="harga">Rp 148.000</span>
-        </div>
-        <div class="card-paket" onclick="pilihPaket(this, '1050 Diamond', 'Rp 219.000')">
-            <span class="badge-promo">SUPER MURAH</span>
-            <span class="dm">💎 1050 Diamonds</span>
-            <span class="coret">Rp 260.000</span>
-            <span class="harga">Rp 219.000</span>
-        </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <div class="badge-promo">PROMO</div>
+        <span class="dm">86 Diamonds</span>
+        <span class="coret">Rp 25.000</span>
+        <span class="harga">Rp 19.500</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <div class="badge-promo">BEST SELLER</div>
+        <span class="dm">172 Diamonds</span>
+        <span class="coret">Rp 50.000</span>
+        <span class="harga">Rp 39.000</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <span class="dm">257 Diamonds</span>
+        <span class="coret">Rp 75.000</span>
+        <span class="harga">Rp 58.500</span>
+      </div>
+      <div class="card-paket" onclick="selectPaket(this)">
+        <div class="badge-promo">HEMAT</div>
+        <span class="dm">706 Diamonds</span>
+        <span class="coret">Rp 200.000</span>
+        <span class="harga">Rp 155.000</span>
+      </div>
     </div>
 
-    <!-- Tombol Order -->
-    <button class="btn-order" onclick="kirimOrder()">
-        🟢 Kirim Pesanan via WhatsApp
-    </button>
-</div>
+    <div class="section-title">3. Hubungi Admin via WhatsApp</div>
+    <div style="text-align: center; margin-top: 15px;">
+      <button onclick="kirimOrder()" class="btn-order">
+        Beli Sekarang via WhatsApp
+      </button>
+    </div>
+  </div>
 
-<script>
-    let paketTerpilih = "";
-    let hargaTerpilih = "";
-
-    function pilihPaket(elemen, namaPaket, harga) {
-        const semuaCard = document.querySelectorAll('.card-paket');
-        semuaCard.forEach(card => card.classList.remove('selected'));
-        elemen.classList.add('selected');
-        paketTerpilih = namaPaket;
-        hargaTerpilih = harga;
+  <script>
+    function selectPaket(element) {
+      const allCards = document.querySelectorAll('.card-paket');
+      allCards.forEach(card => card.classList.remove('selected'));
+      element.classList.add('selected');
     }
 
     function kirimOrder() {
-        const userId = document.getElementById('userId').value;
-        const zoneId = document.getElementById('zoneId').value;
-        const nomorAdmin = "6285213299945"; 
+      const userId = document.getElementById('userId').value;
+      const zoneId = document.getElementById('zoneId').value;
+      const selectedPaket = document.querySelector('.card-paket.selected');
 
-        if (!userId || !zoneId) {
-            alert("Harap isi User ID dan Zone ID Anda!");
-            return;
-        }
-        if (!paketTerpilih) {
-            alert("Harap pilih nominal diamond terlebih dahulu!");
-            return;
-        }
+      if (!userId || !zoneId) {
+        alert('Silakan masukkan User ID dan Zone ID kamu terlebih dahulu!');
+        return;
+      }
+      if (!selectedPaket) {
+        alert('Silakan pilih nominal Diamond terlebih dahulu!');
+        return;
+      }
 
-        const teksPesan = `Halo Admin NovaTopup,%0A%0ASaya ingin memesan Diamond MLBB Harga Promo:%0A%0A- **User ID**: ${userId}%0A- **Zone ID**: ${zoneId}%0A- **Paket**: ${paketTerpilih}%0A- **Harga Promo**: ${hargaTerpilih}%0A%0AMohon info detail pembayarannya min!`;
-        window.open(`https://wa.me{nomorAdmin}?text=${teksPesan}`, '_blank');
+      const namaPaket = selectedPaket.querySelector('.dm').innerText;
+      const hargaPaket = selectedPaket.querySelector('.harga').innerText;
+      const nomorAdmin = "6285213299945"; 
+      
+      const teksPesan = `Halo Admin NovaTopup, saya ingin order:\n\n` +
+                        `• Game: Mobile Legends\n` +
+                        `• User ID: ${userId} (${zoneId})\n` +
+                        `• Paket: ${namaPaket}\n` +
+                        `• Harga: ${hargaPaket}\n\n` +
+                        `Mohon info detail pembayarannya. Terima kasih!`;
+
+      window.open(`https://wa.me{nomorAdmin}?text=${encodeURIComponent(teksPesan)}`, '_blank');
     }
-</script>
-
+  </script>
 </body>
 </html>
+
